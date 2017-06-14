@@ -1,0 +1,36 @@
+'use strict';
+
+// TODO:  Write tests that guarantee that the files are logged in order.
+// TODO:  You will also need to look up and implement async testing, making sure that you are not getting "false positives" (tests that are passing but shouldn't be).
+//   TODO:  hint read mocha docs
+
+
+const pf = require('../lib/print-files.js');
+const expect = require('expect');
+
+describe('pf.printFiles', function() {
+  it("should return 'test1', 'test2', 'test3' in that order", function() {
+    let results = [];
+    let pfTest1 = pf.printFiles(['test1', 'test2', 'test3'], (err, data) => {
+    beforeEach(function(done){
+      results = data.toString();
+      expect(results).toEqual(data);
+      done();
+    });
+    return results;
+  });
+    expect(pfTest1) = ['test1', 'test2', 'test3'];
+  });
+});
+
+
+// pf.printFiles = (paths, callback) =>
+//   fs.readFile(paths[0], (err, data) => {
+//       callback(err, data);
+//     fs.readFile(paths[1], (err, data) => {
+//       callback(err, data);
+//       fs.readFile(paths[2], (err, data) => {
+//         callback(err, data);
+//       });
+//     });
+//   });

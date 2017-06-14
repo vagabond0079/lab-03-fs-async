@@ -1,20 +1,16 @@
-//  it should have a function signature (paths, callback) => undefined
-// TODO:  expect the callback function signature to be (err, data) => undefined
+'use strict';
 
 const fs = require('fs');
 
 const pf = module.exports = {};
 
-pf.printFiles = (paths) =>
+pf.printFiles = (paths, callback) =>
   fs.readFile(paths[0], (err, data) => {
-    if(err)
-      return console.error(err);
-    console.log(data.toString());
+      callback(err, data);
+    fs.readFile(paths[1], (err, data) => {
+      callback(err, data);
+      fs.readFile(paths[2], (err, data) => {
+        callback(err, data);
+      });
+    });
   });
-
-// TODO:  read the three files in order
-
-
-
-// TODO:  on success pass an array of the contents of the files the data param of the callback `callback(null, data)`
-// TODO:  on failure pass and error in to the callback `callback(err)`

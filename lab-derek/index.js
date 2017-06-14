@@ -10,14 +10,15 @@ const index = module.exports = {};
 
 index.main = () => {
 
-  let paths = ['../data/test1.txt'];
+  let paths = ['./data/test1.txt'];
 
-  let result = pf.printFiles(paths);
-  // fs.readFile(paths, (err, data) => {
-    //   if(err)
-    //     return console.error(err);
-    //   console.log(data.toString());
-    // });
+  let result =
+  pf.printFiles(paths);
+  // fs.readFile('./data/test1.txt', (err, data) => {
+  //     if(err)
+  //       return console.error(err);
+  //     console.log(data.toString());
+  //   });
 
   console.log('I\'m reading, can you wait a millisecond?');
   console.log(result);

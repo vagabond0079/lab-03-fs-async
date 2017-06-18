@@ -8,29 +8,32 @@
 const pf = require('../lib/print-files.js');
 const expect = require('expect');
 
-describe('pf.printFiles', function() {
-  it("should return 'test1', 'test2', 'test3' in that order", function() {
-    let results = [];
-    let pfTest1 = pf.printFiles(['test1', 'test2', 'test3'], (err, data) => {
-    beforeEach(function(done){
-      results = data.toString();
-      expect(results).toEqual(data);
+// describe('pf.printFiles', function() {
+//   it("should return 'test1', 'test2', 'test3' in that order", function() {
+//     let results = [];
+//     let pfTest1 = pf.printFiles(['test1', 'test2', 'test3'], (err, data) => {
+//       beforeEach(function(done){
+//         results = data.toString();
+//         expect(results).toEqual(data);
+//         done();
+//       });
+//     return results;
+//   });
+//     expect(pfTest1).toEqual(['test1', 'test2', 'test3']);
+//   });
+// });
+
+describe('testing printFiles', () =>{
+  it('should resolve an array with ["one", "two", "three"]', (done) =>{
+    let paths = [
+      `${__dirname}/data/one.txt`,
+      `${__dirname}/data/one.txt`,
+      `${__dirname}/data/one.txt`,
+    ];
+    pf.printFiles(paths, (err, data) => {
+      if (err) return done(err);
+      expect(data).toEqual(['one', 'two', 'three']);
       done();
     });
-    return results;
-  });
-    expect(pfTest1) = ['test1', 'test2', 'test3'];
   });
 });
-
-
-// pf.printFiles = (paths, callback) =>
-//   fs.readFile(paths[0], (err, data) => {
-//       callback(err, data);
-//     fs.readFile(paths[1], (err, data) => {
-//       callback(err, data);
-//       fs.readFile(paths[2], (err, data) => {
-//         callback(err, data);
-//       });
-//     });
-//   });

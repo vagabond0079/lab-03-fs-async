@@ -15,3 +15,5 @@ index.main = () => {
 };
 
 index.main();
+
+main(process.argv.slice(2));
